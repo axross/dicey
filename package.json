@@ -1,0 +1,20 @@
+{
+  "name": "junky",
+  "description": "",
+  "author": "Kohei Asai <me@axross.io> (https://github.com/axross)",
+  "license": "MIT",
+  "version": "0.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "tslint --project source/ && rimraf ./distribution && tsc && ava"
+  },
+  "dependencies": {
+    "assert": "1.4.1"
+  },
+  "devDependencies": {
+    "ava": "0.16.0",
+    "rimraf": "2.5.4",
+    "tslint": "3.14.0",
+    "typescript": "2.0.0"
+  }
+}
