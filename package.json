@@ -8,7 +8,7 @@
   "scripts": {
     "lint": "tslint --project source/",
     "test": "rimraf ./compiled && tsc && ava",
-    "test-coverage": "rimraf ./compiled && tsc && nyc --sourceMap=inline ava",
+    "coverage": "rimraf ./compiled && tsc && nyc --reporter=lcov --sourceMap=inline ava",
     "compile": "rimraf ./compiled && tsc",
     "postinstall": "npm run compile"
   },
