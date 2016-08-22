@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
+    "declaration": true,
     "module": "commonjs",
     "noImplicitAny": true,
-    "outDir": "./distribution",
+    "outDir": "./compiled",
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "target": "es2015"
