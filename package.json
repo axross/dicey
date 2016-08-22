@@ -3,7 +3,7 @@
   "description": "🎲 Utilities for generating a random value",
   "author": "Kohei Asai <me@axross.io> (https://github.com/axross)",
   "license": "MIT",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "main": "./compiled/index.js",
   "files": [
     "README.md",
@@ -16,9 +16,6 @@
     "coverage": "rimraf compiled && tsc && nyc --reporter=lcov --sourceMap=inline ava",
     "compile": "rimraf compiled && tsc"
   },
-  "dependencies": {
-    "assert": "1.4.1"
-  },
   "devDependencies": {
     "ava": "0.16.0",
     "nyc": "8.1.0",
@@ -28,10 +25,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/axross/junky.git"
+    "url": "git+https://github.com/axross/dicey.git"
   },
   "bugs": {
-    "url": "https://github.com/axross/junky/issues"
+    "url": "https://github.com/axross/dicey/issues"
   },
-  "homepage": "https://github.com/axross/junky#readme"
+  "homepage": "https://github.com/axross/dicey#readme",
+  "typings": "compiled/index.d.ts"
 }
