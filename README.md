@@ -1,11 +1,11 @@
-# Junky
+# Dicey
 
 🎲 Utilities for generating a random value
 
 ## Installation
 
 ```
-$ npm install junky
+$ npm install dicey
 ```
 
 ## Usage

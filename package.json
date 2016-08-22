@@ -1,6 +1,6 @@
 {
-  "name": "junky",
-  "description": "",
+  "name": "dicey",
+  "description": "🎲 Utilities for generating a random value",
   "author": "Kohei Asai <me@axross.io> (https://github.com/axross)",
   "license": "MIT",
   "version": "0.0.0",
@@ -16,5 +16,13 @@
     "rimraf": "2.5.4",
     "tslint": "3.14.0",
     "typescript": "2.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axross/junky.git"
+  },
+  "bugs": {
+    "url": "https://github.com/axross/junky/issues"
+  },
+  "homepage": "https://github.com/axross/junky#readme"
 }
