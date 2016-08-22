@@ -3,14 +3,18 @@
   "description": "🎲 Utilities for generating a random value",
   "author": "Kohei Asai <me@axross.io> (https://github.com/axross)",
   "license": "MIT",
-  "version": "0.0.0",
+  "version": "0.0.3",
   "main": "./compiled/index.js",
+  "files": [
+    "README.md",
+    "package.json",
+    "compiled"
+  ],
   "scripts": {
     "lint": "tslint --project source/",
-    "test": "rimraf ./compiled && tsc && ava",
-    "coverage": "rimraf ./compiled && tsc && nyc --reporter=lcov --sourceMap=inline ava",
-    "compile": "rimraf ./compiled && tsc",
-    "postinstall": "npm run compile"
+    "test": "rimraf compiled && tsc && ava",
+    "coverage": "rimraf compiled && tsc && nyc --reporter=lcov --sourceMap=inline ava",
+    "compile": "rimraf compiled && tsc"
   },
   "dependencies": {
     "assert": "1.4.1"
