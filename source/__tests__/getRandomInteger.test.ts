@@ -1,25 +1,65 @@
 import test from 'ava';
 import getRandomInteger from '../getRandomInteger';
-import getWithoutInteger from '../getWithoutInteger';
 
-test('() returns always an Integer at random.', t => {
-  let [previous, previouss, previousss]: number[] = [NaN, NaN, NaN];
+const TRIALS = 1000000;
+const AMPLITUDE_MAGNIFICATION = 0.005;
 
-  for (let i = 0; i < 1000; ++i) {
-    const current = getRandomInteger(0, 10000000);
+test('(minimum, maximum) returns an Integer at random with arguments. #1', t => {
+  const MINIMUM = -50;
+  const MAXIMUM = 50;
+  const MEDIAN = (MAXIMUM - MINIMUM) / 2 + MINIMUM;
+  const AMPLITUDE = (MAXIMUM - MINIMUM) / 2 * AMPLITUDE_MAGNIFICATION;
+  let total = 0;
 
-    t.not(current, previous);
+  for (let i = 0; i < TRIALS; ++i) {
+    const result = getRandomInteger(MINIMUM, MAXIMUM);
 
-    [previous, previouss, previousss] = [current, previous, previouss];
+    if (result < MINIMUM || result > MAXIMUM) {
+      t.fail(`${result} is an invalid value for between ${MINIMUM} and ${MAXIMUM}`);
+    }
+
+    total += result;
   }
+
+  t.true(total >= TRIALS * (MEDIAN - AMPLITUDE) && total <= TRIALS * (MEDIAN + AMPLITUDE));
 });
 
-test('(minimum, maximum) throws an Error if minimum or maximum is not a Safe Integer.', t => {
-  for (let i = 0; i < 100; ++i) {
-    t.throws(() => getRandomInteger(getRandomInteger(), getWithoutInteger()));
+test('(minimum, maximum) returns an Integer at random with arguments. #2', t => {
+  const MINIMUM = 0;
+  const MAXIMUM = 100;
+  const MEDIAN = (MAXIMUM - MINIMUM) / 2 + MINIMUM;
+  const AMPLITUDE = (MAXIMUM - MINIMUM) / 2 * AMPLITUDE_MAGNIFICATION;
+  let total = 0;
+
+  for (let i = 0; i < TRIALS; ++i) {
+    const result = getRandomInteger(MINIMUM, MAXIMUM);
+
+    if (result < MINIMUM || result > MAXIMUM) {
+      t.fail(`${result} is an invalid value for between ${MINIMUM} and ${MAXIMUM}`);
+    }
+
+    total += result;
   }
 
-  for (let i = 0; i < 100; ++i) {
-    t.throws(() => getRandomInteger(getWithoutInteger(), getRandomInteger()));
+  t.true(total >= TRIALS * (MEDIAN - AMPLITUDE) && total <= TRIALS * (MEDIAN + AMPLITUDE));
+});
+
+test('(minimum, maximum) returns an Integer at random with arguments. #3', t => {
+  const MINIMUM = -100;
+  const MAXIMUM = -50;
+  const MEDIAN = (MAXIMUM - MINIMUM) / 2 + MINIMUM;
+  const AMPLITUDE = (MAXIMUM - MINIMUM) / 2 * AMPLITUDE_MAGNIFICATION;
+  let total = 0;
+
+  for (let i = 0; i < TRIALS; ++i) {
+    const result = getRandomInteger(MINIMUM, MAXIMUM);
+
+    if (result < MINIMUM || result > MAXIMUM) {
+      t.fail(`${result} is an invalid value for between ${MINIMUM} and ${MAXIMUM}`);
+    }
+
+    total += result;
   }
+
+  t.true(total >= TRIALS * (MEDIAN - AMPLITUDE) && total <= TRIALS * (MEDIAN + AMPLITUDE));
 });
