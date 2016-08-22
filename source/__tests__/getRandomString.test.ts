@@ -1,40 +1,40 @@
 import test from 'ava';
 import getRandomInteger from '../getRandomInteger';
 import getRandomString from '../getRandomString';
-import getWithoutInteger from '../getWithoutInteger';
 
-test('() returns always a String at random.', t => {
-  let [previous, previouss, previousss]: string[] = ['', '', ''];
+test('(length, charactors) returns a String at random.', t => {
+  const CHARACTORS = [
+    '0123456789ABCDEF',
+    'github',
+    'UmEbOsHi',
+  ];
 
-  for (let i = 0; i < 1000; ++i) {
-    const current = getRandomString();
+  for (const charactors of CHARACTORS) {
+    for (let i = 0; i < 10000; ++i) {
+      const length = getRandomInteger(1, 100);
+      const result = getRandomString(length, charactors);
 
-    t.not(current, previous);
+      t.is(result.length, length);
 
-    [previous, previouss, previousss] = [current, previous, previouss];
+      for (let j = 0; j < length; ++j) {
+        if (charactors.indexOf(result[j]) === -1) {
+          t.fail(`${result[j]} is not included in ${charactors}`);
+        }
+      }
+    }
   }
 });
 
-test('(length) returns a String as specified.', t => {
-  for (let i = 0; i < 100; ++i) {
-    const length = getRandomInteger(1, 1000);
+test('(length) returns a String at random with default charactors.', t => {
+  const EXPECTED_CHARACTORS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-    t.is(getRandomString(length).length, length);
-  }
-});
+  for (let i = 0; i < 10000; ++i) {
+    const result = getRandomString(100);
 
-test('(length) throws an Error if length is not a Safe Integer.', t => {
-  for (let i = 0; i < 100; ++i) {
-    t.throws(() => getRandomString(getWithoutInteger()));
-  }
-});
-
-test('(length) throws an Error if length is 0.', t => {
-  t.throws(() => getRandomString(0));
-});
-
-test('(length) throws an Error if length is less than 0.', t => {
-  for (let i = 0; i < 100; ++i) {
-    t.throws(() => getRandomString(getRandomInteger(-1000, -1)));
+    for (let j = 0; j < 100; ++j) {
+      if (EXPECTED_CHARACTORS.indexOf(result[j]) === -1) {
+        t.fail(`${result[j]} is not included in ${EXPECTED_CHARACTORS}`);
+      }
+    }
   }
 });

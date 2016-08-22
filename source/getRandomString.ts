@@ -1,18 +1,21 @@
 import * as assert from 'assert';
-import getRandomInteger from './getRandomInteger';
 
-const CHARACTORS = 'abcdefghijklmnopqrstuvwxyz0123456789';
+const CHARACTORS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-const getRandomString = (length: number = 32): string => {
+const getRandomString = (length: number, charactors: string = CHARACTORS): string => {
   assert(
     Number.isSafeInteger(length) && length >= 1,
     '`length` must be an Integer that is 1 or above.'
+  );
+  assert(
+    typeof charactors === 'string' && charactors.length >= 2,
+    'charactors must be a String that length greater than 1.'
   );
 
   let result = '';
 
   for (let i = 0; i < length; ++i) {
-    result += CHARACTORS[getRandomInteger(0, CHARACTORS.length - 1)];
+    result += charactors[Math.floor(Math.random() * charactors.length)];
   }
 
   return result;
