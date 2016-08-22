@@ -12,9 +12,12 @@
   ],
   "scripts": {
     "lint": "tslint --project source/",
-    "test": "rimraf compiled && tsc && ava",
-    "coverage": "rimraf compiled && tsc && nyc --reporter=lcov --sourceMap=inline ava",
-    "compile": "rimraf compiled && tsc"
+    "test": "npm run compile && ava",
+    "coverage": "npm run compile && nyc --reporter=lcov --sourceMap=inline ava",
+    "compile": "npm run clean && tsc",
+    "clean": "rimraf compiled",
+    "prepublish": "npm run compile",
+    "postpublish": "npm run clean"
   },
   "devDependencies": {
     "ava": "0.16.0",
