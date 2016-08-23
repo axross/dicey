@@ -1,21 +1,18 @@
-import * as assert from 'assert';
-
 const getRandomInteger = (
   minimum: number = Number.MIN_SAFE_INTEGER,
   maximum: number = Number.MAX_SAFE_INTEGER,
 ): number => {
-  assert(
-    Number.isSafeInteger(minimum),
-    'minimum must be an Safe Integer.'
-  );
-  assert(
-    Number.isSafeInteger(maximum),
-    'maximum must be an Safe Integer.'
-  );
-  assert(
-    minimum < maximum,
-    'maximum must be greater than minimum.'
-  );
+  if (!(Number.isSafeInteger(minimum))) {
+    throw new Error('minimum must be a Safe Integer.');
+  }
+
+  if (!(Number.isSafeInteger(maximum))) {
+    throw new Error('maximum must be a Safe Integer.');
+  }
+
+  if (!(minimum < maximum)) {
+    throw new Error('maximum must be greater than minimum.');
+  }
 
   return Math.floor(Math.random() * (maximum - minimum + 1) + minimum);
 };
