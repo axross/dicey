@@ -3,7 +3,7 @@
   "description": "🎲 Utilities for generating a random value",
   "author": "Kohei Asai <me@axross.io> (https://github.com/axross)",
   "license": "MIT",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "main": "./compiled/index.js",
   "files": [
     "README.md",
